@@ -17,7 +17,7 @@ const Home = () => {
         <title>Coding</title>
       </Head>
 
-      <Box>
+      <Box w="100vw">
         <Flex direction="column" align="center" justifyContent="center">
           <DynamicText ref={inputTextRef} />
           <Input onChange={onChange} mt="20px" />
