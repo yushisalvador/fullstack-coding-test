@@ -9,14 +9,6 @@ function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  // async function handleLogin(email: string, password: string) {
-  //   try {
-  //     login(email, password);
-  //   } catch (error) {
-  //     setErrorMessage(error.message);
-  //   }
-  // }
-
   return (
     <Container mt="20px" w="100vw" h="100vh">
       <Text fontSize="25px">Login to your account. </Text>
