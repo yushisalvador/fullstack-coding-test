@@ -5,34 +5,27 @@ import useAuth from "auth/auth";
 import { useRouter } from "next/router";
 
 function Signup() {
-  const { signup } = useAuth();
+  const { signup, errorMessage } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<any>(null);
 
-  async function handleSignUp(e) {
-    e.preventDefault();
-    if (password && email) {
-      try {
-        await signup(email, password);
-        router.push("/");
-      } catch (error) {
-        setErrorMessage(error);
-      }
-    }
-  }
   return (
     <Container mt="20px" w="100vw" h="100vh">
-      <Text>{errorMessage}</Text>
+      <Text>{errorMessage?.message}</Text>
       <Text fontSize="25px">Sign up now, and start writing blogs!</Text>
-      <form onSubmit={handleSignUp}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          signup(email, password);
+          router.push("/");
+        }}>
         <FormControl>
           <FormLabel>Email address</FormLabel>
-          <Input type="email" onChange={(e) => setEmail(e.target.value)} isRequired />
+          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} isRequired />
           <FormLabel>Password</FormLabel>
-          <Input type="password" onChange={(e) => setPassword(e.target.value)} isRequired />
+          <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} isRequired />
           <FormHelperText>We'll never share your info.</FormHelperText>
         </FormControl>
         <Button type="submit" mt="20px" float="right">

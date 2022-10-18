@@ -1,9 +1,9 @@
 //file that checks changes in user state
-import "firebase/compat/auth";
-import firebase from "firebase/compat/app";
 import React, { useEffect, useState } from "react";
-
+import firebase from "firebase/compat/app";
 import useAuth from "auth/auth";
+import "firebase/compat/auth";
+
 import { Box } from "@chakra-ui/react";
 
 export default function AuthStateChanged({ children }: any) {

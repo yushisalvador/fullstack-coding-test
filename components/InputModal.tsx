@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -16,6 +16,9 @@ import {
 
 export default function InputModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   return (
     <>
       <Button onClick={onOpen}>Add Blog</Button>
@@ -29,10 +32,10 @@ export default function InputModal() {
             <form>
               <FormControl>
                 <FormLabel> Title</FormLabel>
-                <Input type="text" />
-                <FormLabel> Body</FormLabel>
+                <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <FormLabel> Content</FormLabel>
                 <Textarea />
-                <Input type="file" mt="10px" />
+                <Input type="file" mt="10px" value={content} onChange={(e) => setContent(e.target.value)} />
                 <Button float="right" mt="10px">
                   Post
                 </Button>
