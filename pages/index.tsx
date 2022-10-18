@@ -3,6 +3,7 @@ import Head from "next/head";
 import DynamicText from "components/DynamicText";
 import { Container, Box, Input, Flex, Text } from "@chakra-ui/react";
 import { Private } from "auth/authRoute";
+import NavBar from "components/Navbar";
 
 const Home = () => {
   const inputTextRef = useRef(null);
@@ -20,6 +21,7 @@ const Home = () => {
 
       <Box>
         <Flex direction="column" align="center" justifyContent="center">
+          <NavBar />
           <DynamicText ref={inputTextRef} />
           <Input onChange={onChange} mt="20px" />
         </Flex>
