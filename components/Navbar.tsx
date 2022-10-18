@@ -62,7 +62,7 @@ export default function NavBar() {
               Home
             </Button>
           </Link>
-          <Link href="/entries">
+          <Link href="/blogs">
             <Button as="button" variant="ghost" aria-label="Blogs" my={5} w="100%" onClick={() => setDisplay("none")}>
               Blogs
             </Button>

@@ -8,6 +8,7 @@ function Login() {
   const { login } = auth;
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+
   return (
     <Container mt="20px" w="100vw" h="100vh">
       <Text fontSize="25px">Login to your account. </Text>

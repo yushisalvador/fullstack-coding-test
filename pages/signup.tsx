@@ -29,8 +29,6 @@ function Signup() {
       <Text fontSize="25px">Sign up now, and start writing blogs!</Text>
       <form onSubmit={handleSignUp}>
         <FormControl>
-          {/* <FormLabel>Nickname</FormLabel>
-          <Input type="Text" isRequired /> */}
           <FormLabel>Email address</FormLabel>
           <Input type="email" onChange={(e) => setEmail(e.target.value)} isRequired />
           <FormLabel>Password</FormLabel>
