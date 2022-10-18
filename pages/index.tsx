@@ -1,24 +1,29 @@
+import React, { useState, useRef } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import DynamicText from "../components/DynamicText";
+import DynamicText from "components/DynamicText";
+import { Container, Box, Input, Flex } from "@chakra-ui/react";
 
 const Home = () => {
+  const inputTextRef = useRef(null);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    e.preventDefault();
+    inputTextRef.current.changeValue(e.target.value);
   };
 
   return (
-    <div className={styles.container}>
+    <Container>
       <Head>
-        <title>Coding Test</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Coding</title>
       </Head>
 
-      <main className={styles.main}>
-        <DynamicText />
-        <input onChange={onChange} />
-      </main>
-    </div>
+      <Box>
+        <Flex direction="column" align="center" justifyContent="center">
+          <DynamicText ref={inputTextRef} />
+          <Input onChange={onChange} mt="20px" />
+        </Flex>
+      </Box>
+    </Container>
   );
 };
 
