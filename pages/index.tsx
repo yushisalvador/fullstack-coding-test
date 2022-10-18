@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import Head from "next/head";
 import DynamicText from "components/DynamicText";
-import { Container, Box, Input, Flex } from "@chakra-ui/react";
+import { Container, Box, Input, Flex, Text } from "@chakra-ui/react";
+import { Private } from "auth/authRoute";
 
 const Home = () => {
   const inputTextRef = useRef(null);
@@ -17,7 +18,7 @@ const Home = () => {
         <title>Coding</title>
       </Head>
 
-      <Box w="100vw">
+      <Box>
         <Flex direction="column" align="center" justifyContent="center">
           <DynamicText ref={inputTextRef} />
           <Input onChange={onChange} mt="20px" />
@@ -27,4 +28,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Private(Home);
