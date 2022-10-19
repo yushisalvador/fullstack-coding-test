@@ -6,7 +6,7 @@ export default function NavBar() {
   const [display, setDisplay] = useState("none");
 
   return (
-    <Flex>
+    <Flex zIndex="50">
       <Flex pos="fixed" top="1rem" right="1rem" align="center">
         <Hide below="md">
           <Flex>

@@ -13,6 +13,7 @@ import {
   Input,
   Textarea,
   Text,
+  Center,
 } from "@chakra-ui/react";
 import { storage } from "auth/config/firebase.config";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -48,7 +49,7 @@ export default function InputModal() {
   const handlePost = async (event: any) => {
     event.preventDefault();
     const newPostObj = {
-      user: user.email,
+      user_email: user.email,
       title: title,
       content: content,
       image: imageURL,
@@ -59,7 +60,12 @@ export default function InputModal() {
   };
   return (
     <>
-      <Button onClick={onOpen}>Add Blog</Button>
+      <Center>
+        {" "}
+        <Button type="button" onClick={onOpen} m="20px">
+          Add Blog
+        </Button>
+      </Center>
 
       <Modal isCentered onClose={onClose} isOpen={isOpen} motionPreset="slideInBottom">
         <ModalOverlay />
