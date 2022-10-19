@@ -32,9 +32,6 @@ function Signup() {
           Signup
         </Button>
       </form>
-      <Button type="submit" mt="20px" mr="10px" float="right">
-        Signup with Google{" "}
-      </Button>
     </Container>
   );
 }
