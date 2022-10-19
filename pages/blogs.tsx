@@ -5,22 +5,15 @@ import InputModal from "components/InputModal";
 import NavBar from "components/Navbar";
 import { getAllBlogs } from "services/blogs.services";
 import Feed from "components/Feed";
-
-interface Blogs {
-  id: string;
-  title: string;
-  content: string;
-  imageURL: string;
-}
+import { Blog } from "types/types";
 
 function Blogs() {
-  const [blogs, setBlogs] = useState<Blogs[]>([]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
 
   const getBlogs = async () => {
     const data = await getAllBlogs();
     const blogData = data?.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setBlogs(blogData);
-    console.log("blogs", blogs);
   };
 
   useEffect(() => {

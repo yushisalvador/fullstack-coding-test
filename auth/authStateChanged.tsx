@@ -11,7 +11,7 @@ export default function AuthStateChanged({ children }: any) {
   const [loading, setLoading] = useState<Boolean>(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user: firebase.User) => {
       setUser(user);
       setLoading(false);
     });
