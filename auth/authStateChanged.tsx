@@ -1,8 +1,8 @@
 //file that checks changes in user state
 import React, { useEffect, useState } from "react";
-import firebase from "firebase/compat/app";
 import useAuth from "auth/auth";
 import "firebase/compat/auth";
+import firebase from "firebase/compat/app";
 
 import { Box } from "@chakra-ui/react";
 

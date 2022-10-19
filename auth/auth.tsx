@@ -2,12 +2,14 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useContext, useState } from "react";
 import { auth } from "./config/firebase.config";
+import firebase from "firebase/compat/app";
 import { FirebaseError } from "@firebase/util";
 
 interface AuthData {
-  user: object | null;
+  user: firebase.User | null;
   setUser: (user: object | null) => void;
-  login: () => Promise<void>;
+  signup: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   errorMessage: FirebaseError;
 }
