@@ -1,10 +1,14 @@
 import React, { useState, useRef } from "react";
 import Head from "next/head";
 import DynamicText from "components/DynamicText";
-import { Container, Box, Input, Flex } from "@chakra-ui/react";
+import { Container, Box, Input, Flex, Text } from "@chakra-ui/react";
+import { Private } from "auth/authRoute";
+import NavBar from "components/Navbar";
+import useAuth from "auth/auth";
 
 const Home = () => {
   const inputTextRef = useRef(null);
+  const { user } = useAuth();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -19,6 +23,8 @@ const Home = () => {
 
       <Box>
         <Flex direction="column" align="center" justifyContent="center">
+          <NavBar />
+          {console.log(user)}
           <DynamicText ref={inputTextRef} />
           <Input onChange={onChange} mt="20px" />
         </Flex>
@@ -27,4 +33,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Private(Home);
