@@ -24,7 +24,6 @@ const Home = () => {
       <Box>
         <Flex direction="column" align="center" justifyContent="center">
           <NavBar />
-          {console.log(user)}
           <DynamicText ref={inputTextRef} />
           <Input onChange={onChange} mt="20px" />
         </Flex>

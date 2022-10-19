@@ -4,16 +4,17 @@ import { createContext, useContext, useState } from "react";
 import { auth } from "./config/firebase.config";
 import { FirebaseError } from "@firebase/util";
 
-// interface AuthData {
-//   user: object | null;
-//   setUser: (user: object | null) => void;
-//   login: () => Promise<UserCredential>;
-//   logout: () => void;
-// }
-const authContext = createContext<any | null>(null);
+interface AuthData {
+  user: object | null;
+  setUser: (user: object | null) => void;
+  login: () => Promise<void>;
+  logout: () => void;
+  errorMessage: FirebaseError;
+}
+const authContext = createContext<AuthData | null>(null);
 
 export default function useAuth() {
-  return useContext(authContext) as any;
+  return useContext(authContext) as AuthData;
 }
 
 export function AuthProvider(props: any) {
