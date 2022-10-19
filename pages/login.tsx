@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Text, FormControl, Input, FormLabel, Button } from "@chakra-ui/react";
 import { Public } from "auth/authRoute";
 import useAuth from "auth/auth";
+import Link from "next/link";
 
 function Login() {
   const auth = useAuth();
@@ -41,6 +42,11 @@ function Login() {
           Login{" "}
         </Button>
       </form>
+      <Link href={"/signup"}>
+        <Text as="u" _hover={{ cursor: "pointer" }}>
+          Dont have an Account? Signup!
+        </Text>
+      </Link>
     </Container>
   );
 }
