@@ -29,6 +29,7 @@ export default function InputModal() {
   const [content, setContent] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [error, setError] = useState<any>(null);
+  const [message, setMessage] = useState("");
 
   const metadata = {
     contentType: "image/jpeg",
@@ -39,9 +40,8 @@ export default function InputModal() {
     try {
       const imageRef = ref(storage, `blogs/${image?.name + v4()}`);
       const snapshot = await uploadBytes(imageRef, image, metadata);
-      console.log(snapshot, "anapshot");
       const url = await getDownloadURL(snapshot.ref);
-      console.log("URL", url);
+      if (url) setMessage("image uploaded successfully");
       setImageURL(url);
     } catch (error) {
       setError(error);
@@ -98,6 +98,7 @@ export default function InputModal() {
                   isRequired
                 />
                 <FormHelperText>JPG only</FormHelperText>
+                <Text>{message}</Text>
 
                 <Button float="right" mt="10px" type="submit">
                   Post
