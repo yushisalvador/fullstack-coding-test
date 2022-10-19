@@ -44,7 +44,7 @@ function Login() {
       </form>
       <Link href={"/signup"}>
         <Text as="u" _hover={{ cursor: "pointer" }}>
-          Dont have an Account? Signup!
+          Dont have an account? Signup!
         </Text>
       </Link>
     </Container>
