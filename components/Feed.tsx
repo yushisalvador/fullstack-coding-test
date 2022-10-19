@@ -12,7 +12,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
-  Flex,
 } from "@chakra-ui/react";
 
 export default function Feed({ blog }) {

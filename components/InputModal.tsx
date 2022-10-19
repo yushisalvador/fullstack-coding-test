@@ -56,7 +56,6 @@ export default function InputModal() {
       content: content,
       image: imageURL,
     };
-    console.log(newPostObj);
     await addBlog(newPostObj);
     onClose();
   };
