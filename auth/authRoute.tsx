@@ -12,7 +12,7 @@ export function Public(Component: any) {
 
     if (auth?.user) {
       router.replace("/");
-      return <Box>Loading</Box>;
+      return <Box>Loading...</Box>;
     }
     return <Component auth={auth} {...props} />;
   };

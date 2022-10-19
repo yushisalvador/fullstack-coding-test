@@ -37,7 +37,9 @@ export default function Feed({ blog }) {
           <ModalCloseButton />
           <ModalBody pb="10px">
             <Image src={blog.image} alt="blog-image" w="sm" />
-            <Text align="center">{blog.content}</Text>
+            <Text align="center" p="20px">
+              {blog.content}
+            </Text>
           </ModalBody>
         </ModalContent>
       </Modal>

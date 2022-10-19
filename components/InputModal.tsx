@@ -37,9 +37,10 @@ export default function InputModal() {
   //store the image in storage bucket, then convert it to string, store the string in the db
   const imgUpload = async (image: any) => {
     try {
-      const imageRef = ref(storage, `blogs/${image.name + v4()}`);
+      const imageRef = ref(storage, `blogs/${image?.name + v4()}`);
       const snapshot = await uploadBytes(imageRef, image, metadata);
       const url = await getDownloadURL(snapshot.ref);
+      console.log("URL", url);
       setImageURL(url);
     } catch (error) {
       setError(error);
@@ -54,7 +55,7 @@ export default function InputModal() {
       content: content,
       image: imageURL,
     };
-
+    console.log(newPostObj);
     await addBlog(newPostObj);
     onClose();
   };

@@ -15,7 +15,6 @@ interface Blogs {
 
 function Blogs() {
   const [blogs, setBlogs] = useState<Blogs[]>([]);
-  const [view, setView] = useState<string>("feed");
 
   const getBlogs = async () => {
     const data = await getAllBlogs();
@@ -31,7 +30,7 @@ function Blogs() {
   return (
     <>
       <NavBar />
-      <Container maxW="90vw" mt="20">
+      <Container maxW="100vw" mt="20" px={["20px", "20px", "50px", "50px"]}>
         <InputModal />
         <Wrap>
           {blogs.map((blog) => (
