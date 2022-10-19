@@ -14,9 +14,10 @@ import {
   Textarea,
   Text,
   Center,
+  FormHelperText,
 } from "@chakra-ui/react";
 import { storage } from "auth/config/firebase.config";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL, uploadString, StringFormat } from "firebase/storage";
 import { v4 } from "uuid";
 import useAuth from "auth/auth";
 import { addBlog } from "services/blogs.services";
@@ -27,8 +28,8 @@ export default function InputModal() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageURL, setImageURL] = useState("");
-  const [image, setImage] = useState<any>(null);
   const [error, setError] = useState<any>(null);
+  const [message, setMessage] = useState("");
 
   const metadata = {
     contentType: "image/jpeg",
@@ -40,7 +41,7 @@ export default function InputModal() {
       const imageRef = ref(storage, `blogs/${image?.name + v4()}`);
       const snapshot = await uploadBytes(imageRef, image, metadata);
       const url = await getDownloadURL(snapshot.ref);
-      console.log("URL", url);
+      if (url) setMessage("image uploaded successfully");
       setImageURL(url);
     } catch (error) {
       setError(error);
@@ -92,11 +93,13 @@ export default function InputModal() {
                   type="file"
                   mt="10px"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setImage(e.target.files[0]);
-                    imgUpload(image);
+                    imgUpload(e.target.files[0]);
                   }}
                   isRequired
                 />
+                <FormHelperText>JPG only</FormHelperText>
+                <Text>{message}</Text>
+
                 <Button float="right" mt="10px" type="submit">
                   Post
                 </Button>
