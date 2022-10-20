@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { Private } from "auth/authRoute";
-import Link from "next/link";
 import useAuth from "auth/auth";
 function Logout() {
   const router = useRouter();

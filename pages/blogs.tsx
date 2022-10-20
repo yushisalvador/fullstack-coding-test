@@ -5,7 +5,7 @@ import InputModal from "components/InputModal";
 import NavBar from "components/Navbar";
 import Feed from "components/Feed";
 import { Blog, BlogDoc } from "types/types";
-import { onSnapshot, collection, Unsubscribe } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "auth/config/firebase.config";
 const blogCollection = collection(db, "blogs");
 

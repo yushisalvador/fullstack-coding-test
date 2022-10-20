@@ -17,7 +17,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 import { storage } from "auth/config/firebase.config";
-import { ref, uploadBytes, getDownloadURL, uploadString, StringFormat } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import useAuth from "auth/auth";
 import { addBlog } from "services/blogs.services";
@@ -39,9 +39,10 @@ export default function InputModal() {
   const imgUpload = async (image: any) => {
     try {
       const imageRef = ref(storage, `blogs/${image?.name + v4()}`);
+      setMessage("uploading...");
       const snapshot = await uploadBytes(imageRef, image, metadata);
       const url = await getDownloadURL(snapshot.ref);
-      if (url) setMessage("image uploaded successfully");
+      if (url) setMessage("Image uploaded successfully");
       setImageURL(url);
     } catch (error) {
       setError(error);
@@ -83,11 +84,7 @@ export default function InputModal() {
                   value={title}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                 />
-                <FormLabel> Content</FormLabel>
-                <Textarea
-                  value={content}
-                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
-                />
+                <FormLabel>Photo (jpg, png) </FormLabel>
                 <Input
                   type="file"
                   mt="10px"
@@ -96,8 +93,13 @@ export default function InputModal() {
                   }}
                   isRequired
                 />
-                <FormHelperText>JPG only</FormHelperText>
                 <Text>{message}</Text>
+
+                <FormLabel mt="10px"> Content</FormLabel>
+                <Textarea
+                  value={content}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
+                />
 
                 <Button float="right" mt="10px" type="submit">
                   Post
