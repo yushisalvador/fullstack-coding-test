@@ -1,3 +1,10 @@
+export interface BlogPost {
+  title: string;
+  content: string;
+  image: string;
+  user_email: string;
+}
+
 export interface Blog {
   id: string;
   title: string;

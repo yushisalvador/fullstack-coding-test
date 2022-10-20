@@ -7,7 +7,7 @@ import { FirebaseError } from "@firebase/util";
 
 interface AuthData {
   user: firebase.User | null;
-  setUser: (user: object | null) => void;
+  setUser: (user: firebase.User | null) => void;
   signup: (email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;

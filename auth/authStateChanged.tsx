@@ -8,7 +8,7 @@ import { Box } from "@chakra-ui/react";
 
 export default function AuthStateChanged({ children }: any) {
   const { setUser } = useAuth();
-  const [loading, setLoading] = useState<Boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user: firebase.User) => {
