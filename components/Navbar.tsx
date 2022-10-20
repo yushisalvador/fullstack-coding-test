@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Flex, Button, IconButton, Show, Hide } from "@chakra-ui/react";
+import { Flex, Button, IconButton, Show, Hide, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import AlertModal from "./AlertModal";
 export default function NavBar() {
   const [display, setDisplay] = useState("none");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex zIndex="50">
@@ -16,9 +18,10 @@ export default function NavBar() {
             <Link href="/blogs">
               <Button mx={5}>Blogs</Button>
             </Link>
-            <Link href="/logout">
-              <Button mx={5}>Logout</Button>
-            </Link>
+            <Button mx={5} onClick={onOpen}>
+              Logout
+            </Button>
+            <AlertModal onClose={onClose} isOpen={isOpen} />
           </Flex>
         </Hide>
 
@@ -67,20 +70,11 @@ export default function NavBar() {
               Blogs
             </Button>
           </Link>
-          <Link href="/logout">
-            <Button
-              as="button"
-              variant="ghost"
-              aria-label="Logout"
-              my={5}
-              w="100%"
-              onClick={(e) => {
-                e.preventDefault();
-                setDisplay("none");
-              }}>
-              Logout{" "}
-            </Button>
-          </Link>
+          <Button as="button" variant="ghost" aria-label="Logout" my={5} w="100%" onClick={onOpen}>
+            {" "}
+            Logout{" "}
+          </Button>
+          <AlertModal onClose={onClose} isOpen={isOpen} />
         </Flex>
       </Flex>
     </Flex>
