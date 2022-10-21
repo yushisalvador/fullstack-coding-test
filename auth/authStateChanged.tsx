@@ -15,7 +15,7 @@ export default function AuthStateChanged({ children }: any) {
       setUser(user);
       setLoading(false);
     });
-  }, [setUser]);
+  }, []);
 
   if (loading) {
     return <Box>Loading.....</Box>;
