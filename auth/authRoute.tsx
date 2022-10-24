@@ -5,7 +5,9 @@ import { useRouter } from "next/router";
 import useAuth from "auth/auth";
 import { Box } from "@chakra-ui/react";
 
+//function
 export function Public(Component: any) {
+  // component
   return function Public({ ...props }) {
     const auth = useAuth();
     const router = useRouter();

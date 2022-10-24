@@ -4,8 +4,7 @@ import { Public } from "auth/authRoute";
 import useAuth from "auth/auth";
 import Link from "next/link";
 
-function Login() {
-  const auth = useAuth();
+function Login({ auth }) {
   const { login, errorMessage } = auth;
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
