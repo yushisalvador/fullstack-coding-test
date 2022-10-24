@@ -11,10 +11,11 @@ export default function AuthStateChanged({ children }: any) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user: firebase.User) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user: firebase.User) => {
       setUser(user);
       setLoading(false);
     });
+    return unsubscribe;
   }, [setUser]);
 
   if (loading) {

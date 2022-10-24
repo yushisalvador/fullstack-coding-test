@@ -38,9 +38,12 @@ export default function InputModal() {
   //store the image in storage bucket, then convert it to string, store the string in the db
   const imgUpload = async (image: any) => {
     try {
+      //create reference of the path
       const imageRef = ref(storage, `blogs/${image?.name + v4()}`);
       setMessage("uploading...");
+      //upload to cloud storage
       const snapshot = await uploadBytes(imageRef, image, metadata);
+      // get URL
       const url = await getDownloadURL(snapshot.ref);
       if (url) setMessage("Image uploaded successfully");
       setImageURL(url);

@@ -8,8 +8,7 @@ import NavBar from "components/Navbar";
 const Home = () => {
   const inputTextRef = useRef(null);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const onChange = (e: any) => {
     inputTextRef.current.changeValue(e.target.value);
   };
 
